@@ -73,9 +73,12 @@ share {
   } else {
     plugin 'Build::CMake';
     build [
-      ['%{cmake}', @{ meta->prop->{plugin_build_cmake}->{args} }, '%{.install.extract}'],
-      '%{make}',
-      '%{make} install',
+      ['%{cmake}', @{ meta->prop->{plugin_build_cmake}->{args} },
+	'-S' => '%{.install.extract}',
+	'-B' => '_build',
+      ],
+      [ '%{make}', qw(-C _build), ],
+      [ '%{make}', qw(-C _build), 'install' ],
     ];
   }
 }
