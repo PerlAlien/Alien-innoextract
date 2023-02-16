@@ -41,6 +41,8 @@ share {
   );
   my $meta_arch = meta->prop->{platform}{cpu}{arch}{name};
 
+  # TODO add a ALIEN_INNOEXTRACT_FROM_SOURCE env var
+  # Will need to have Boost, liblzma, iconv.
   my $do_binary = exists $os_mapping{$^O}{arch}{$meta_arch};
 
   my $suffix    = $do_binary ? $os_mapping{$^O}{suffix}  : '';
