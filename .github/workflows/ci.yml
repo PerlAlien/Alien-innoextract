@@ -110,6 +110,11 @@ jobs:
         run: |
           pacman -S --needed --noconfirm ${{ env.PKG_MSYS2_MINGW64 }}
 
+      - name: Install deps on macOS to build share + from source
+        if: runner.os == 'macOS' && matrix.alien-install-type == 'share'
+        run:
+          brew install boost xz
+
       - name: Install unzip on Windows
         if: runner.os == 'Windows' && matrix.dist == 'strawberry'
         run:
