@@ -6,7 +6,7 @@ use Alien::innoextract;
 alien_diag 'Alien::innoextract';
 alien_ok 'Alien::innoextract';
 
-run_ok([ qw(innoextract --version) ])
+run_ok([ Alien::innoextract->exe, qw(--version) ])
   ->success
   ->out_like(qr/^innoextract ([0-9\.]+)/);
 
